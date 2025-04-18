@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backw"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/log1" />
+
+        <TextView
+            android:id="@+id/loginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="casual"
+            android:layout_marginTop="16dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username: "
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:textSize="14sp"
+                android:padding="12dp"
+                android:minHeight="48dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:background="@drawable/custom"
+                android:drawableStart="@drawable/customperson"
+                android:drawablePadding="10dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address: "
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Address"
+                android:inputType="textPostalAddress"
+                android:textSize="14sp"
+                android:padding="12dp"
+                android:minHeight="48dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:background="@drawable/custom"
+                android:drawableStart="@drawable/custom2"
+                android:drawablePadding="10dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone: "
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:textSize="14sp"
+                android:padding="12dp"
+                android:minHeight="48dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:background="@drawable/custom"
+                android:drawableStart="@drawable/customphone"
+                android:drawablePadding="10dp" />
+        </LinearLayout>
+
+
+        <CheckBox
+            android:id="@+id/rem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"
+            android:fontFamily="casual"
+            android:buttonTint="#A8D5BA" />
+
+
+
+        <Button
+            android:id="@+id/loginb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#A8D5BA"
+            android:textColor="@android:color/white"
+            android:fontFamily="casual" />
+    </LinearLayout>
+</LinearLayout>

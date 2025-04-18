@@ -1,0 +1,114 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="@drawable/backw">
+    <ImageButton
+        android:id="@+id/im1"
+        android:layout_width="75dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Mail"
+        android:scaleType="centerInside"
+        android:src="@drawable/mail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/home"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="Home"
+        android:src="@drawable/h22"
+        app:layout_constraintEnd_toStartOf="@id/im1"
+        app:layout_constraintTop_toTopOf="@id/im1"
+        app:layout_constraintBottom_toBottomOf="@id/im1" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="Cart item list"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/home"
+    app:layout_constraintBottom_toTopOf="@+id/totalText"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+            android:id="@+id/cartContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" />
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/totalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Total: $0"
+        android:fontFamily="casual"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textColor="#000"
+        android:background="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/confirmBuyButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <Button
+        android:id="@+id/confirmBuyButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Confirm Buy"
+        android:fontFamily="casual"
+        android:textAllCaps="false"
+        android:backgroundTint="#A8D5BA"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomStrip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="8dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/bottomStrip"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="#000"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <ImageView
+            android:id="@+id/settingsIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="Settings"
+            android:src="@drawable/sittings" />
+
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="Profile"
+            android:src="@drawable/heart2" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

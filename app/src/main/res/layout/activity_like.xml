@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backw"
+    tools:context=".LikeAct">
+
+
+  <ImageButton
+      android:id="@+id/im1"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp"
+      android:background="?attr/selectableItemBackgroundBorderless"
+      android:contentDescription="Mail"
+      android:scaleType="centerInside"
+      android:src="@drawable/mail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+  <ImageView
+      android:id="@+id/home"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:layout_marginEnd="8dp"
+      android:contentDescription="Home"
+      android:src="@drawable/h22"
+      app:layout_constraintEnd_toStartOf="@id/im1"
+      app:layout_constraintTop_toTopOf="@id/im1" />
+
+
+  <TextView
+      android:id="@+id/titleText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Your Favorites"
+      android:textSize="24sp"
+      android:textColor="@color/black"
+      android:textStyle="bold"
+      android:fontFamily="casual"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="130dp"
+  app:layout_constraintStart_toStartOf="parent"
+  app:layout_constraintTop_toTopOf="parent" />
+
+
+  <ScrollView
+      android:id="@+id/scrollView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:fillViewport="true"
+      app:layout_constraintTop_toBottomOf="@id/titleText"
+      app:layout_constraintBottom_toTopOf="@id/bottomStrip"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:id="@+id/favoritesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" />
+  </ScrollView>
+
+
+  <LinearLayout
+      android:id="@+id/bottomStrip"
+      android:layout_width="0dp"
+      android:layout_height="60dp"
+      android:orientation="horizontal"
+      android:background="@color/black"
+      android:gravity="center"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+    <ImageView
+        android:id="@+id/settingsIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="Settings"
+        android:src="@drawable/sittings" />
+
+    <ImageView
+        android:id="@+id/bagIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="bag"
+        android:src="@drawable/pag" />
+  </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
