@@ -68,6 +68,8 @@ public class FurAct extends AppCompatActivity {
             Toast.makeText(this, "Error initializing screen", Toast.LENGTH_SHORT).show();
             Log.e("FurAct", "Init error", e);
         }
+
+
     }
 
     private void initializeViews() {

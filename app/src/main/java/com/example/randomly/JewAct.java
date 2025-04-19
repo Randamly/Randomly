@@ -46,7 +46,7 @@ public class JewAct extends AppCompatActivity {
     Button addToFavoritesBtn1, addToBagBtn1;
     Button addToFavoritesBtn2, addToBagBtn2;
     private ArrayAdapter<String> adapter;
-    private final String[] categories = {"Cloth", "Furniture", "Crafts", "Random"};
+    private final String[] categories = {"Crafts", "Furniture", "Clothes", "Random"};
     private TextView quantityText2, quantityText3, quantityText4;
     private SharedPreferences prefs;
     private static final String PREFS_NAME = "prefs_name";
@@ -95,7 +95,32 @@ public class JewAct extends AppCompatActivity {
         // Load and set up
         loadProductData();
         setupSpinner();
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = (String) parent.getItemAtPosition(position);
+            Intent intent = null;
 
+            switch (selectedItem) {
+                case "Clothes":
+                    intent = new Intent(JewAct.this, CloAct.class);
+                    break;
+                case "Furniture":
+                    intent = new Intent(JewAct.this, FurAct.class);
+                    break;
+                case "Crafts":
+                    intent = new Intent(JewAct.this, CraAct.class);
+                    break;
+                case "Random":
+                    intent = new Intent(JewAct.this, RandAct.class);
+                    break;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                hideListView();
+            } else {
+                showToast("No matching activity found");
+            }
+        });
         // Bag click
         addToBagBtn0.setOnClickListener(v -> handleAddToCart("titanic"));
 

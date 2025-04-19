@@ -96,6 +96,33 @@ public class RandAct extends AppCompatActivity {
         loadProductData();
         setupSpinner();
 
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = (String) parent.getItemAtPosition(position);
+            Intent intent = null;
+
+            switch (selectedItem) {
+                case "Jewelry":
+                    intent = new Intent(RandAct.this, JewAct.class);
+                    break;
+                case "Furniture":
+                    intent = new Intent(RandAct.this, FurAct.class);
+                    break;
+                case "Crafts":
+                    intent = new Intent(RandAct.this, CraAct.class);
+                    break;
+                case "Clothes":
+                    intent = new Intent(RandAct.this, CloAct.class);
+                    break;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                hideListView(); // hide list after navigating
+            } else {
+                showToast("No matching activity found");
+            }
+        });
+
         // Bag click
         addToBagBtn0.setOnClickListener(v -> handleAddToCart("omar"));
 

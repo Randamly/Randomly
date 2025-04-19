@@ -63,6 +63,8 @@ public class CloAct extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+
+
         });
 
         // Init views
@@ -95,6 +97,32 @@ public class CloAct extends AppCompatActivity {
         // Load and set up
         loadProductData();
         setupSpinner();
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = (String) parent.getItemAtPosition(position);
+            Intent intent = null;
+
+            switch (selectedItem) {
+                case "Jewelry":
+                    intent = new Intent(CloAct.this, JewAct.class);
+                    break;
+                case "Furniture":
+                    intent = new Intent(CloAct.this, FurAct.class);
+                    break;
+                case "Crafts":
+                    intent = new Intent(CloAct.this, CraAct.class);
+                    break;
+                case "Random":
+                    intent = new Intent(CloAct.this, RandAct.class);
+                    break;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                hideListView(); // hide list after navigating
+            } else {
+                showToast("No matching activity found");
+            }
+        });
 
         // Bag click
         addToBagBtn0.setOnClickListener(v -> handleAddToCart("T-Shirt"));

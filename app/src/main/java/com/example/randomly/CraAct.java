@@ -46,7 +46,7 @@ public class CraAct extends AppCompatActivity {
     Button addToFavoritesBtn1, addToBagBtn1;
     Button addToFavoritesBtn2, addToBagBtn2;
     private ArrayAdapter<String> adapter;
-    private final String[] categories = {"Jewelry", "Furniture", "Crafts", "Random"};
+    private final String[] categories = {"Jewelry", "Furniture", "Clothes", "Random"};
     private TextView quantityText2, quantityText3, quantityText4;
     private SharedPreferences prefs;
     private static final String PREFS_NAME = "prefs_name";
@@ -95,6 +95,33 @@ public class CraAct extends AppCompatActivity {
         // Load and set up
         loadProductData();
         setupSpinner();
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = (String) parent.getItemAtPosition(position);
+            Intent intent = null;
+
+            switch (selectedItem) {
+                case "Jewelry":
+                    intent = new Intent(CraAct.this, JewAct.class);
+                    break;
+                case "Furniture":
+                    intent = new Intent(CraAct.this, FurAct.class);
+                    break;
+                case "Clothes":
+                    intent = new Intent(CraAct.this, CloAct.class);
+                    break;
+                case "Random":
+                    intent = new Intent(CraAct.this, RandAct.class);
+                    break;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                hideListView(); // hide list after navigating
+            } else {
+                showToast("No matching activity found");
+            }
+        });
 
         // Bag click
         addToBagBtn0.setOnClickListener(v -> handleAddToCart("drawing"));
@@ -238,9 +265,9 @@ public class CraAct extends AppCompatActivity {
 
     private void filterProducts(String category) {
         productLayout1.setVisibility(category.equals("All") || category.equals("Art") ? View.VISIBLE : View.GONE);
-        productLayout2.setVisibility(category.equals("All") || category.equals("Candle") ? View.VISIBLE : View.GONE);
-
+        productLayout2.setVisibility(category.equals("All") || category.equals("Candles") ? View.VISIBLE : View.GONE);
     }
+
 
     private boolean canAddToCart(String productName) {
         switch (productName) {
