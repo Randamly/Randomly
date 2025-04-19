@@ -204,17 +204,19 @@ public class RandAct extends AppCompatActivity {
         List<String> favorites = gson.fromJson(favoritesJson, listType);
         if (favorites == null) favorites = new ArrayList<>();
 
-        boolean isFavorite = favorites.contains(productName);
+
+        String favoriteKey = "Random:" + productName;
+        boolean isFavorite = favorites.contains(favoriteKey);
+
         if (isFavorite) {
-            favorites.remove(productName);
+            favorites.remove(favoriteKey);
         } else {
-            favorites.add(productName);
+            favorites.add(favoriteKey);
         }
 
         prefs.edit().putString(FAVORITES_KEY, gson.toJson(favorites)).apply();
         showToast(productName + (isFavorite ? " removed from" : " added to") + " favorites");
     }
-
     private void loadProductData() {
         Gson gson = new Gson();
         String jsonData = prefs.getString(PRODUCT_DATA_KEY, null);

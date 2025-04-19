@@ -3,7 +3,7 @@ package com.example.randomly;
 public class Product {
     private String name;
     private int quantity;
-    private int bought; // Tracks how many items have been added to the cart
+    private int bought;
 
     public Product(String name, int quantity, int bought) {
         this.name = name;

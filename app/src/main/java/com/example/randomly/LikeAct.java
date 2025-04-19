@@ -3,6 +3,7 @@ package com.example.randomly;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -59,34 +60,46 @@ public class LikeAct extends AppCompatActivity {
 
     private void loadFavorites() {
         favoritesContainer.removeAllViews();
-
         Gson gson = new Gson();
 
         // Load favorites list
         String favoritesJson = prefs.getString(FAVORITES_KEY, "[]");
         Type setType = new TypeToken<Set<String>>(){}.getType();
         Set<String> favorites = gson.fromJson(favoritesJson, setType);
+
         if (favorites == null || favorites.isEmpty()) {
             showToast("You don't have any favorites yet.");
             return;
         }
 
-        // Load all products
-        String productsJson = prefs.getString(PRODUCT_DATA_KEY, "[]");
-        Type productListType = new TypeToken<List<Product>>(){}.getType();
-        List<Product> allProducts = gson.fromJson(productsJson, productListType);
 
-        // Display favorite products
         for (String favoriteName : favorites) {
-            for (Product product : allProducts) {
-                if (product.getName().equals(favoriteName)) {
-                    addFavoriteProductView(product);
-                    break;
-                }
-            }
+            addFavoriteProductView(favoriteName);
         }
     }
 
+    private void addFavoriteProductView(String productName) {
+        View cardView = getLayoutInflater().inflate(R.layout.favorite_item_layout, null);
+
+        TextView nameText = cardView.findViewById(R.id.itemName);
+        nameText.setText(productName);
+
+        TextView priceText = cardView.findViewById(R.id.itemPrice);
+        priceText.setText("Price: $" + getPrice(productName)); // Use a default price method
+
+        Button removeButton = cardView.findViewById(R.id.removeBtn);
+        removeButton.setOnClickListener(v -> {
+            removeFromFavorites(productName);
+            favoritesContainer.removeView(cardView);
+        });
+
+        Button addToCartButton = cardView.findViewById(R.id.addToCartBtn);
+        addToCartButton.setOnClickListener(v -> {
+            showToast(productName + " - Check stock in the product's category");
+        });
+
+        favoritesContainer.addView(cardView);
+    }
     private void addFavoriteProductView(Product product) {
         View cardView = getLayoutInflater().inflate(R.layout.favorite_item_layout, null);
 
@@ -158,6 +171,7 @@ public class LikeAct extends AppCompatActivity {
             case "Shoe": return 56;
             case "drawing": return 70;
             case "candle": return 16;
+            case "omar": return 9000000;
             case "coin": return 100;
             case "titanic": return 300000;
             default: return 20;

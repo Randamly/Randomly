@@ -202,11 +202,14 @@ public class JewAct extends AppCompatActivity {
         List<String> favorites = gson.fromJson(favoritesJson, listType);
         if (favorites == null) favorites = new ArrayList<>();
 
-        boolean isFavorite = favorites.contains(productName);
+
+        String favoriteKey = "Jewelry:" + productName;
+        boolean isFavorite = favorites.contains(favoriteKey);
+
         if (isFavorite) {
-            favorites.remove(productName);
+            favorites.remove(favoriteKey);
         } else {
-            favorites.add(productName);
+            favorites.add(favoriteKey);
         }
 
         prefs.edit().putString(FAVORITES_KEY, gson.toJson(favorites)).apply();
